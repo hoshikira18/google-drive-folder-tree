@@ -1,7 +1,7 @@
 
 
     
-    var YOUR_REDIRECT_URI = 'https://graph-tree.w3spaces.com';
+    var YOUR_REDIRECT_URI = 'http://127.0.0.1:5500';
     var fragmentString = location.hash.substring(1);
 
     // Parse query string to see if page request is coming from OAuth 2.0 server.
@@ -17,6 +17,10 @@
       }
     }
 
+    var ClientID = document.querySelector('#client-id');
+    let localStorageClientID = localStorage.getItem('client_id');
+    localStorageClientID ? ClientID.value = localStorageClientID : ClientID.value = '';
+
 
 function trySampleRequest(folderId, parentElement, level) {
   
@@ -31,7 +35,6 @@ function trySampleRequest(folderId, parentElement, level) {
     xhr.onreadystatechange = function (e) {
       if (xhr.readyState === 4 && xhr.status === 200) {
         let folderData = JSON.parse(xhr.response);
-        console.log(folderData);
 
         // Process each subfolder
         if (folderData.files) {
@@ -86,8 +89,12 @@ function trySampleRequest(folderId, parentElement, level) {
 
 
     function oauth2SignIn() {
-      var YOUR_CLIENT_ID = document.querySelector('#client-id').value
-    //   var YOUR_CLIENT_ID = '827991249178-7266v9638qfmdms8hea327dnemnv19eq.apps.googleusercontent.com'
+      
+      var YOUR_CLIENT_ID = ClientID.value
+      
+      // Save the client ID in local storage.
+      localStorage.setItem('client_id', YOUR_CLIENT_ID);
+
       // Google's OAuth 2.0 endpoint for requesting an access token
       var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
 
@@ -125,4 +132,5 @@ function trySampleRequest(folderId, parentElement, level) {
     const btn = document.querySelector('#btn');
     btn.addEventListener('click', () => {
       trySampleRequest('root', document.getElementById('tree-container'), 0);
+      localStorage.setItem('client_id', document.querySelector("#client-id").value);
     });

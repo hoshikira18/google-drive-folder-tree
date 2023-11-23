@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,19 +8,25 @@
   <link rel="stylesheet" href="styles.css">
   <script src="https://kit.fontawesome.com/98e7058ed2.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-  <h1>Google Drive Folder Tree</h1>
-  <input type="text" id="client-id">
-  
-    <button id="btn">Click</button>
-  <div id="tree-container">
-    <li class="subfolder-item root">
+  <div class="container">
+
+    <h3 class="title">Google Drive Folder Tree</h3>
+    <input type="text" id="client-id">
+    <button id="btn">Draw</button>
+
+    <div id="tree-container">
+      <li class="subfolder-item root">
         <span class="line"></span>
         <i class="far fa-folder-open" aria-hidden="true"></i>
         <span>root</span>
-    </li>
+      </li>
+    </div>
+
   </div>
 
   <script src="main.js"></script>
 </body>
+
 </html>
