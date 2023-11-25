@@ -58,7 +58,7 @@ function trySampleRequest(folderId, parentElement, level) {
 
             // Create a span for the folder name
             var folderName = document.createElement('span');
-            folderName.textContent = subfolder.name;
+            folderName.textContent = subfolder.name + "/";
 
             // Append the empty span, icon, and folder name to the list item
             subfolderItem.appendChild(emptySpan);
@@ -131,6 +131,14 @@ function trySampleRequest(folderId, parentElement, level) {
     
     const btn = document.querySelector('#btn');
     btn.addEventListener('click', () => {
-      trySampleRequest('root', document.getElementById('tree-container'), 0);
+      const folderLink = document.querySelector("#folder-id").value;
+      if(folderLink === "https://drive.google.com/drive/my-drive") {
+        folderId = 'root';
+      }
+      else {
+        folderId = folderLink.replace("https://drive.google.com/drive/folders/", "");
+      }
+
+      trySampleRequest(folderId, document.getElementById('tree-container'), 0);
       localStorage.setItem('client_id', document.querySelector("#client-id").value);
     });

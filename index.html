@@ -13,14 +13,17 @@
   <div class="container">
 
     <h3 class="title">Google Drive Folder Tree</h3>
-    <input type="text" id="client-id">
+    <div class="input">
+      <input type="text" id="folder-id" placeholder="Folder link">
+      <input type="text" id="client-id" placeholder="Client ID">
+    </div>
     <button id="btn">Draw</button>
 
     <div id="tree-container">
       <li class="subfolder-item root">
         <span class="line"></span>
         <i class="far fa-folder-open" aria-hidden="true"></i>
-        <span>root</span>
+        <span>root/</span>
       </li>
     </div>
 

@@ -21,8 +21,14 @@ h3 {
   font-family: 'Space Mono', monospace;
 }
 
-#client-id {
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
   padding: 5px 10px;
+  margin-bottom: 10px;
   width: 300px;
 }
 
